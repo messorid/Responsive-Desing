@@ -137,13 +137,24 @@
     </footer>
     <script>
         const menu = document.querySelector('.menu')
-    
-        console.log(menu);
+        const ipad = window.matchMedia('screen and (max-width:767px)')
+        console.log(window.matchMedia('screen and (max-width:767px)'));
+        // console.log(menu);
         const burgerButton = document.querySelector('#burger-menu')
-        console.log(burgerButton);
+        // console.log(burgerButton);
         
+        ipad.addListener(validation)
 
+        function validation(event){
+            if (event.matches) {
         burgerButton.addEventListener('click', hideShow)
+
+            }else {
+             burgerButton.removeEventListener('click', hideShow)
+            }
+            console.log(event.matches)
+        }
+
 
         function hideShow() {
             if (menu.classList.contains('is-active')){
